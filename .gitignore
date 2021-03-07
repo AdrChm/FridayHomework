@@ -1,0 +1,13 @@
+# notes and some code #
+/tmp.txt
+
+# configuration #
+*.iml
+.idea
+
+# drivers #
+/resources
+
+# classes #
+*.class
+
