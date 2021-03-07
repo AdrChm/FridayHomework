@@ -20,7 +20,6 @@ public class SeleniumTest1 {
         WebDriver driver = new ChromeDriver();
         driver.get("https://hello.friday.de/quote/selectPrecondition"); //opening site
         driver.quit();//quitting site
-        //System.setProperty("webdriver.chrome.driver","resources/windows/chromedriver.exe");
 
     }
 }
