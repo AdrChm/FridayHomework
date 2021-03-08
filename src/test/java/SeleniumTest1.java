@@ -1,25 +1,34 @@
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.*; // nie wiem czemu dorzuca kolejne importy
+import org.openqa.selenium.edge.EdgeDriver;
 
 public class SeleniumTest1 {
-
-    //@BeforeClass // instalacja przed
-//    public static void setupClass() {
-       // WebDriverManager.edgedriver().setup();
-       // WebDriverManager.firefoxdriver().setup();
-//    }
-
-    @Test
-    public void firstTest()
+    WebDriver driver;
+    @BeforeAll // instalacja przed
+    public static void webDriverSetup()
     {
-        // windows path to chromedriver
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://hello.friday.de/quote/selectPrecondition"); //opening site
-        driver.quit();//quitting site
+        WebDriverManager.edgedriver().setup();
+    }
+    @Test
+    public void edgeTest()
+    {
+        driver = new EdgeDriver();
+        driver.get("https://hello.friday.de/quote/selectPrecondition");
 
+        // cookies
+        try{
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException ie){
+            driver.quit();
+        }
+        WebElement element = driver.findElement(By.id("uc-btn-accept-banner"));
+        element.click();
+        element = driver.findElement(By.xpath("//*[@type=\"submit\"]"));
+        element.click();
+        driver.quit();
     }
 }

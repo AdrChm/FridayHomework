@@ -8,6 +8,6 @@
 # drivers #
 /resources
 
-# classes #
+# executions #
 *.class
-
+*.lst
